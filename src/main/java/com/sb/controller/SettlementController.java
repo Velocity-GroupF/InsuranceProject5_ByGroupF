@@ -24,6 +24,7 @@ public class SettlementController {
 	public String deletesettlement(@PathVariable("id") int id)
 	{
 		settlementService.deleteSettlemetById(id);
+		System.out.println("fhgfgh");
 		
 		return "Deleted Sucessfully";
 	}

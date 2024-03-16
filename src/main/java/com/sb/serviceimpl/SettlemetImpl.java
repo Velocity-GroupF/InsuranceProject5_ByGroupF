@@ -3,7 +3,9 @@ package com.sb.serviceimpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sb.model.Policy;
 import com.sb.model.Settlement;
+import com.sb.repository.PolicyRepository;
 import com.sb.repository.SettlementRepository;
 import com.sb.service.SettlementService;
 
@@ -12,6 +14,11 @@ public class SettlemetImpl implements SettlementService{
 	
 	@Autowired
 	private SettlementRepository settlementRepository;
+	
+	@Autowired
+	private PolicyRepository policyRepository;
+
+
 
 
 	@Override
@@ -20,4 +27,15 @@ public class SettlemetImpl implements SettlementService{
 		
 	}
 
+	@Override
+	public Settlement SaveSettlement(Settlement settlement) {
+		System.out.println("inside serviceimpl class");
+		return settlementRepository.save(settlement);
+	}
+	
+	@Override
+	public Policy savePolicy(Policy policy) {
+		
+		return policyRepository.save(policy);
+	}
 }

@@ -20,6 +20,12 @@ public class PolicyServiceimpl implements PolicyService {
 		return policyRepository.save(policy);
 	}
 
+	@Override
+	public Policy getpolicyById(int id) {
+		
+		return policyRepository.findById(id).get();
+	}
+
 	
 
 	

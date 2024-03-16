@@ -131,5 +131,11 @@ public class Controller {
 	
 	}
 	
+	@GetMapping("/getPolicybyid/{id}")
+	public Policy getPolicyById(@PathVariable("id") int id)
+	{
+	  return policyServiceimpl.getpolicyById(id);
+	}
+	
 	
 }

@@ -24,7 +24,18 @@ public class Policy {
 	@OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)
 	private User user;
 	
+	@OneToOne(targetEntity = Driver.class, cascade = CascadeType.ALL)
+	private Driver driver;
 	
+	
+	
+	
+	public Driver getDriver() {
+		return driver;
+	}
+	public void setDriver(Driver driver) {
+		this.driver = driver;
+	}
 	public User getUser() {
 		return user;
 	}
@@ -70,8 +81,10 @@ public class Policy {
 	@Override
 	public String toString() {
 		return "Policy [id=" + id + ", policyholdername=" + policyholdername + ", type=" + type + ", premium=" + premium
-				+ ", coverageamount=" + coverageamount + ", status=" + status + ", user=" + user + "]";
+				+ ", coverageamount=" + coverageamount + ", status=" + status + ", user=" + user + ", driver=" + driver
+				+ "]";
 	}
+
 	
 	
 	

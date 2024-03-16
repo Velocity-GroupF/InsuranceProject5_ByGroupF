@@ -11,4 +11,5 @@ public interface PolicyService {
 
 
 	public Policy savePolicy(Policy policy);
+	public Policy getpolicyById(int id);
 }

@@ -4,10 +4,12 @@ import java.time.LocalDateTime;
 
 import org.springframework.ui.context.Theme;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,6 +25,18 @@ public class Settlement {
 	private String status;
 	private LocalDateTime dateTime;
 	
+	
+	@OneToOne(targetEntity = Claim.class, cascade = CascadeType.ALL)
+	private Claim claim;
+	
+	
+	
+	public Claim getClaim() {
+		return claim;
+	}
+	public void setClaim(Claim claim) {
+		this.claim = claim;
+	}
 	public int getId() {
 		return id;
 	}
@@ -62,8 +76,10 @@ public class Settlement {
 	@Override
 	public String toString() {
 		return "Settlement [id=" + id + ", payee=" + payee + ", payer=" + payer + ", amount=" + amount + ", status="
-				+ status + ", dateTime=" + dateTime + "]";
+				+ status + ", dateTime=" + dateTime + ", claim=" + claim + "]";
 	}
+	
+	
 	
 	
 	

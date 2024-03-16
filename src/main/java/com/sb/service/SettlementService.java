@@ -10,4 +10,5 @@ public interface SettlementService {
 	public Settlement SaveSettlement(Settlement settlement);
 	
 	public Policy savePolicy(Policy policy);
+	public Settlement saveSettlement(Settlement settlement);
 }

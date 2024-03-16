@@ -38,4 +38,10 @@ public class SettlemetImpl implements SettlementService{
 		
 		return policyRepository.save(policy);
 	}
+
+	@Override
+	public Settlement saveSettlement(Settlement settlement) {
+		
+		return settlementRepository.save(settlement);
+	}
 }

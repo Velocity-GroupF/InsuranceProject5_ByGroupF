@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sb.model.Claim;
 import com.sb.model.Payment;
 import com.sb.model.Policy;
 import com.sb.model.Settlement;
@@ -36,6 +37,8 @@ public class Controller {
 	
 	@Autowired
 	private PaymentServiceimpl paymentServiceimpl;
+	
+	
 	
 	
 	@PostMapping("/savepayment")
@@ -137,5 +140,28 @@ public class Controller {
 	  return policyServiceimpl.getpolicyById(id);
 	}
 	
+	@PostMapping("/savesetlement")
+	public ResponseEntity<?> saveSettlement1(@RequestBody Settlement settlement)
+	{
+		String claimstatus= settlement.getClaim().getStatus();
+		
+		Claim claim1= settlement.getClaim();
+		claim1.setClaimDate(LocalDateTime.now());
+		settlement.setDateTime(LocalDateTime.now());
+		
+		if(claimstatus.equalsIgnoreCase("completed"))
+		{
+			Settlement s1= settlementService.SaveSettlement(settlement);
+			return ResponseEntity.ok().body(s1);
+		}
+		else {
+			 return ResponseEntity.badRequest().body("claim is not yet done");
+			
+		}
+		
+		
+		
+		
+	}
 	
 }
